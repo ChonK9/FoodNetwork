@@ -1,0 +1,7 @@
+{
+  "name": "Food-Network",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
