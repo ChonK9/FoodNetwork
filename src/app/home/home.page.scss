@@ -11,9 +11,20 @@ swiper-slide {
 }
 
 .title1{
-  color:rgb(255, 130, 130)
+  color:rgb(255, 130, 130);
+  align-items: center;
 }
 
 .bg-color-slide{
  background-color: blue;
+}
+
+.user_avatar{
+  width: 30px;
+  height: 30px;
+}
+
+.image-post{
+  margin: 0 auto;
+  display: block;
 }

@@ -13,14 +13,14 @@ export class IntroPage implements OnInit {
   constructor(
     private router: Router,
     private storage: Storage
-  ) { }
+  ) {}
 
   ngOnInit() {
   }
 
   finish(){
-    console.log('Finish');
+    console.log('finish');
     this.storage.set('viLaIntro', true);
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/menu/home');
   }
 }

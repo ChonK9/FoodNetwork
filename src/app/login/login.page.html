@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title class="ion-text-center">LOGIN</ion-title>
+
+  <figure class="text-center" class="ion-text-center">
+    <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+  </figure>
+
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+
+    <ion-item>
+      <ion-input label="Email" labelPlacement="floating" placeholder="example@gmail.com" formControlName="email"></ion-input>
+    </ion-item>
+
+    <div>
+      <ng-container *ngFor="let error of formErrors.email">
+        <ion-label color="danger" *ngIf="(loginForm.get('email')?.hasError(error.type) && loginForm.get('email')?.dirty)">{{error.message}}</ion-label>
+      </ng-container>
+    </div>
+
+    <div>
+      <ion-item>
+       <ion-input label="Password" labelPlacement="floating" placeholder="********" formControlName="password" type="password" [counter]="true" maxlength="20"></ion-input>
+     </ion-item>
+    </div>
+  
+    <div>
+      <ng-container *ngFor="let error of formErrors.password">
+        <ion-label color="danger" *ngIf="(loginForm.get('password')?.hasError(error.type) && loginForm.get('password')?.dirty)">{{error.message}}</ion-label>
+      </ng-container>
+    </div>
+
+    <ion-button type="submit" [disabled]="!loginForm.valid">
+      Log In
+    </ion-button>
+
+  </form>
+  
+<!--Agregar boton o Link para redigir al regsitro-->
+
+  <p>{{errorMessage}}</p>
+</ion-content>

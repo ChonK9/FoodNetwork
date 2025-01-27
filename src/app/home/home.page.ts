@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,18 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class HomePage {
+  posts: any;
 
-  constructor() {}
+  constructor(
+    private postService: PostService,
+  ) {}
+
+  ngOnInit(){
+    console.log('Home Page')
+    this.postService.getPosts().then((data: any)=>{
+      console.log(data);
+      this.posts = data;
+    })
+  }
 
 }
