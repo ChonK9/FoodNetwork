@@ -9,7 +9,7 @@
 <ion-content>
   <ion-title>{{user_data.name}} {{user_data.last_name}}</ion-title>
   <ion-avatar (click)="takePhoto()">
-    <img [src]="user_data.image"/>
+    <img [src]="user_data.image ? user_data.image : 'assets/images/default-avatar.jpeg'"/>
   </ion-avatar>
 
   <p>Usuario: {{user_data.username}}</p>

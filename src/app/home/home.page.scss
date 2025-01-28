@@ -28,3 +28,10 @@ swiper-slide {
   margin: 0 auto;
   display: block;
 }
+
+ion-fab{
+  ion-fab-button{
+    --background: rgb(211, 110, 52);
+    --color:white;
+  }
+}

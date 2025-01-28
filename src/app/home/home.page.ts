@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { PostService } from '../services/post.service';
+import { ModalController } from '@ionic/angular';
+import { AddPostModalPage } from '../add-post-modal/add-post-modal.page';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +10,51 @@ import { PostService } from '../services/post.service';
   standalone: false,
 })
 export class HomePage {
-  posts: any;
+  posts: any[] = [];
+  page: number = 1;
+  limit: number = 10;
+  hasMore: boolean = true;
 
   constructor(
     private postService: PostService,
+    private modalController: ModalController,
   ) {}
 
   ngOnInit(){
-    console.log('Home Page')
-    this.postService.getPosts().then((data: any)=>{
-      console.log(data);
-      this.posts = data;
-    })
+    console.log('InitHome')
+    this.loadPosts();
+    }
+  
+
+  async addPost(){
+    console.log('Post a Post');
+    const modal = await this.modalController.create({
+      component: AddPostModalPage,
+      componentProps:{}
+    });
+    return await modal.present()
   }
 
+  loadPosts(event?: any){
+    this.postService.getPosts(this.page, this.limit).then(
+      (data:any) =>{
+        if(data.length > 0){
+          this.posts = [...this.posts, ...data];
+          this.page++;
+        }else{
+          this.hasMore = false;
+        }
+
+        if(event){
+          event.target.complete();
+        }
+      },
+      (error)=>{
+        console.log(error);
+        if(event){
+          event.target.complete();
+        }
+      }
+    )
+  }
 }
