@@ -3,6 +3,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { AuthService } from '../services/auth.service';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginPage implements OnInit {
     ],
     password: [
       {type: 'required', message:'La contraseña es obligatoria' },
-      {type: 'length', message:'La contraseña es muy corta' },
+      {type: 'minlength', message:'La contraseña es muy corta' },
     ]
   }
 
@@ -30,6 +31,7 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private navCtrl: NavController,
     private storage: Storage,
+    private router: Router,
   ) { 
     this.loginForm = this.FormBuilder.group({
       email: new FormControl('',Validators.compose([
@@ -58,6 +60,11 @@ export class LoginPage implements OnInit {
       console.log(err);
       this.errorMessage = err;
     })
+  }
+
+  finish(){
+    console.log('finish');
+    this.router.navigateByUrl('/register');
   }
 
 }

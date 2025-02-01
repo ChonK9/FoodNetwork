@@ -7,12 +7,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-title>{{user_data.name}} {{user_data.last_name}}</ion-title>
-  <ion-avatar (click)="takePhoto()">
+  <h1>{{user_data.name}} {{user_data.last_name}}</h1>
+  <ion-avatar (click)="presentPhotoOptions()">
     <img [src]="user_data.image ? user_data.image : 'assets/images/default-avatar.jpeg'"/>
   </ion-avatar>
 
   <p>Usuario: {{user_data.username}}</p>
-  <p>Seguidores: {{user_data.followed_users.length}}</p>
-  <p>Siguiendo: {{user_data.following_users.length}}</p>
+  <table>
+   <p>Seguidores: {{user_data.followers.length}}</p>
+   <p>Siguiendo: {{user_data.followees.length}}</p>
+  </table>
+  <!--USE TABLE TO ORGANIZE ACCOUNT PAGE-->
+  <!--MAKE MODAL FOR MODIFYING PROFILE-->
+  <ion-footer>
+    <ion-button type="submit" expand="full">
+      Editar Perfil
+    </ion-button>
+  </ion-footer>
 </ion-content>

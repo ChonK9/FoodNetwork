@@ -5,6 +5,9 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { PostService } from '../services/post.service';
 import { Storage } from '@ionic/storage-angular';
 import { ModalController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 defineCustomElements(window);
 
@@ -15,14 +18,24 @@ defineCustomElements(window);
   standalone: false,
 })
 export class AddPostModalPage implements OnInit {
-  post_image: any;
+  post_image: any; 
   addPostForm: FormGroup;
+  formErrors={
+    description: [
+      {type: 'required', message: 'Debe haber texto para crear un post'},
+    ],
+    image: [
+      {type: 'required', message:'Se debe adjuntar una imagen para crear un post'},
+    ]
+  }
 
   constructor(
     private formBuilder: FormBuilder,
     private postService: PostService,
     private storage: Storage,
-    private modalController: ModalController
+    private modalController: ModalController,
+    public alertController: AlertController,
+    private router: Router,
   ) { 
     this.addPostForm = this.formBuilder.group({
       description: new FormControl('', Validators.required),
@@ -46,6 +59,19 @@ export class AddPostModalPage implements OnInit {
     })
   }
 
+  async uploadCPhoto(){
+    console.log('Photo Upload')
+    const uploadPhoto = await Camera.getPhoto({
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera,
+      quality: 100
+    });
+    this.post_image = uploadPhoto.dataUrl;
+    this.addPostForm.patchValue({
+      image: this.post_image
+    })
+  }
+
   async addPost(post_data: any){
     console.log('Add Post');
     console.log(post_data);
@@ -61,11 +87,52 @@ export class AddPostModalPage implements OnInit {
     this.postService.createPost(post_param).then(
       (data: any) => {
         console.log(data, 'post creado');
-        this.modalController.dismiss({null: null})
+        data.user = {
+          id: user.id,
+          name: user.name,
+          image: user.image || 'assets/images/defualt-avatar.jpeg'
+        };
+        this.addPostForm.reset();
+        this.post_image = null;
+        this.modalController.dismiss();
       },
       (error) => {
         console.log(error, 'error');
       }
     );
   }
+
+  async presentPhotoOptions(){
+    const alert = await this.alertController.create({
+      header: "Seleccione una Opción",
+      message: "¿De donde desea obtener la imagen?",
+      buttons:[
+        {
+          text: "Camera",
+          handler: ()=> {
+            this.uploadCPhoto();
+          }
+        },
+        {
+          text: "Galería",
+          handler: ()=>{
+            this.uploadPhoto();
+          }
+        },
+        {
+          text: "Cancelar",
+          role: "cancel",
+          handler: ()=>{
+            console.log('Cancelado');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  bhome(){
+    this.modalController.dismiss();
+  }
+
 }

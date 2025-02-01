@@ -12,9 +12,19 @@
     </ion-header>
     <ion-content>
       <!--Contenido de Menu-->
+      <ion-item (click)="go_home()" (click)="closeMenu()">
+        Home
+      </ion-item>
+      <ion-item (click)="go_account()" (click)="closeMenu()">
+        Cuenta
+       </ion-item>
+       <ion-item (click)="go_search()" (click)="closeMenu()">
+        Buscar 
+       </ion-item>
       <ion-item (click)="log_out()">
         <ion-icon name="log-out-outline"></ion-icon> Salir
       </ion-item>
+
     </ion-content>
   </ion-menu>
  <ion-router-outlet id="content"></ion-router-outlet> 

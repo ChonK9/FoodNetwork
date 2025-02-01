@@ -1,11 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Iniciar Sesion</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-title class="ion-text-center">LOGIN</ion-title>
 
   <figure class="text-center" class="ion-text-center">
     <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
@@ -36,8 +35,10 @@
     </div>
 
     <ion-button type="submit" [disabled]="!loginForm.valid">
-      Log In
-    </ion-button>
+      Iniciar Sesion
+    </ion-button> <br>
+
+    <ion-button (click)="finish()">Crear Cuenta</ion-button>
 
   </form>
   
