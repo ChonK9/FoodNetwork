@@ -1,6 +1,6 @@
 <ion-header >
   <ion-toolbar>
-    <ion-title>Usuarios</ion-title>
+    <ion-title class="logoish">Bubble</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -8,15 +8,16 @@
 </ion-header>
 
 <ion-content>
+  <ion-progress-bar *ngIf="isLoading" type="indeterminate"></ion-progress-bar>
     <ion-toolbar>
-      <ion-searchbar placeholder="Buscar Usuarios ^^" (ionInput)="searchUsers($event)"></ion-searchbar>
+      <ion-searchbar class="mons" placeholder="Buscar Usuarios" (ionInput)="searchUsers($event)"></ion-searchbar>
     </ion-toolbar>
   <ion-list>
     <ion-item *ngFor="let user of users">
       <ion-avatar slot="start">
         <img [src]="user.image || 'assets/images/default-avatar.jpeg' "/>
       </ion-avatar> 
-      <ion-label>
+      <ion-label class="mons">
         <h2>{{ user.name }} {{ user.last_name }}</h2>
       </ion-label>
       <ion-button slot="end" (click)="togglefollow(user)">

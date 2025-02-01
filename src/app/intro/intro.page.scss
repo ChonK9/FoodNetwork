@@ -10,13 +10,6 @@ swiper-container{
     justify-content: center;
   }
   
-  .title1{
-    color:rgb(255, 130, 130);
-  }
-  
-  .bg-img1{
-    background-image: url(/src/assets/images/salan.jpeg);
-  }
 
   .close-icon {
     position: absolute;
@@ -24,4 +17,51 @@ swiper-container{
     right: 10px;
     font-size: 35px;
     color: white;
+}
+
+.logoish{
+  font-family: Baristo;
+  font-size: xx-large;
+  font-style: italic;
+}
+
+.baristo{
+  font-family:'Courier New', Courier, monospace;
+}
+
+.imag{
+  height: 35%;
+  width: 90%;
+
+  align-items: center;
+}
+
+.imagi{
+  height: 40%;
+  width: 80%;
+
+  align-items: center;
+}
+
+p{
+  text-align: center;
+}
+
+.bg{
+  background-color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+}
+
+div{
+  padding: 40;
+  height: 70%;
+  border-radius: 10px;
+  width:65% ;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 5% auto ;
+  background-color:rgb(255, 255, 255);
+  text-align: center;
+  border: 5px;
+  border-color: rgb(0, 0, 0);
 }

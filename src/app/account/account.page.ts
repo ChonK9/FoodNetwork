@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Storage } from '@ionic/storage-angular';
-import { Camera, CameraResultType, CameraSource, Photo} from '@capacitor/camera';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import { AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { EditAccountModalPage } from '../edit-account-modal/edit-account-modal.page';
 
 defineCustomElements(window);
 @Component({
@@ -26,7 +26,7 @@ export class AccountPage implements OnInit {
   constructor(
     private userService: UserService,
     private storage: Storage, 
-    public alertController: AlertController,
+    private modalController: ModalController,
   ) { }
 
   async ngOnInit() {
@@ -45,18 +45,6 @@ export class AccountPage implements OnInit {
     )
   }
 
-  async takePhoto(source: CameraSource) {
-    console.log('Take Photo');
-    const capturedPhoto = await Camera.getPhoto({
-      resultType: CameraResultType.DataUrl,
-      source: source,
-      quality: 100
-    });
-    console.log(capturedPhoto.dataUrl);
-    this.user_data.image = capturedPhoto.dataUrl;
-    this.update();
-  }
-
   async update(){
     this.userService.updateUser(this.user_data).then(
       (data) => {
@@ -69,33 +57,17 @@ export class AccountPage implements OnInit {
     )
   }
 
-  async presentPhotoOptions(){
-    const alert = await this.alertController.create({
-      header: "Seleccione una Opción",
-      message: "¿De donde desea obtener la imagen?",
-      buttons:[
-        {
-          text: "Camera",
-          handler: ()=> {
-            this.takePhoto(CameraSource.Camera);
-          }
-        },
-        {
-          text: "Galería",
-          handler: ()=>{
-            this.takePhoto(CameraSource.Photos);
-          }
-        },
-        {
-          text: "Cancelar",
-          role: "cancel",
-          handler: ()=>{
-            console.log('Cancelado');
-          }
-        }
-      ]
+  async editAccount(){
+    console.log('Editar Perfil');
+    const modal = await this.modalController.create({
+      component: EditAccountModalPage,
+      componentProps:{},
     });
-    await alert.present();
+    return await modal.present();
+  }
+
+  clickup(){
+    location.reload();
   }
 
 }

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon name="close" class="close-icon" (click)="cedit()" slot="end"></ion-icon>
+    <ion-title class="legoish">Editar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+ <div>
+  <ion-avatar (click)="presentPhotoOptions()">
+    <img [src]="user_data.image ? user_data.image : 'assets/images/default-avatar.jpeg'"/>
+  </ion-avatar>
+ </div>
+
+ <p class="mons">Foto de Perfil</p>
+
+ <form [formGroup]="editForm" (ngSubmit)="updateUser(editForm.value)">
+
+    <ion-item>
+      <ion-input class="mons" label="Nombre" labelPlacement="floating" placeholder="Name Mc'Name" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input class="mons" label="Apellido" labelPlacement="floating" placeholder="Last n Name" formControlName="last_name"></ion-input>
+    </ion-item>
+
+    <ng-container *ngFor="let error of FormErrors.name">
+      <ion-label class="monsa" color="danger"
+      *ngIf="(editForm.get('name')?.hasError(error.type) && editForm.get('name')?.dirty)">
+      {{error.message}}
+     </ion-label>
+    </ng-container>
+  
+  
+    <ng-container *ngFor="let error of FormErrors.last_name">
+      <ion-label class="monsa" color="danger"
+      *ngIf="(editForm.get('last_name')?.hasError(error.type) && editForm.get('last_name')?.dirty)">
+      {{error.message}}
+     </ion-label>
+    </ng-container>
+
+    <ion-button fill="outline" class="monst" type="submit" [disabled]="!editForm.valid" >
+      Actualizar Info
+     </ion-button>
+
+ </form>
+
+</ion-content>

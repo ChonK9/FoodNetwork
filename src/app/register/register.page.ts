@@ -14,10 +14,6 @@ export class RegisterPage implements OnInit {
   registerForm: FormGroup;
   errorMessage: any;
   FormErrors = {
-    email: [
-      {type: 'required', message:'El correo es obligatorio' },
-      {type: 'email', message:'El correo no es valido' },
-    ],
     name: [
       {type: 'required', message: 'El nombre es obligatorio' },
       {type: 'pattern', message: 'El nombre solo puede contener letras y espacios'},
@@ -25,6 +21,10 @@ export class RegisterPage implements OnInit {
     last_name: [
       {type: 'required', message: 'El apellido es obligatorio' },
       {type: 'pattern', message: 'El apellido solo puede contener letras y espacios'},
+    ],
+    email: [
+      {type: 'required', message:'El correo es obligatorio' },
+      {type: 'email', message:'El correo no es valido' },
     ],
     username: [
       {type: 'required', message: 'El nombre de usuario es obligatorio' },

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Iniciar Sesion</ion-title>
+    <ion-title class="logoish">Bubble</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,32 +13,33 @@
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
 
     <ion-item>
-      <ion-input label="Email" labelPlacement="floating" placeholder="example@gmail.com" formControlName="email"></ion-input>
+      <ion-input class="mons" label="Email" labelPlacement="floating" placeholder="example@gmail.com" formControlName="email"></ion-input>
     </ion-item>
 
     <div>
-      <ng-container *ngFor="let error of formErrors.email">
-        <ion-label color="danger" *ngIf="(loginForm.get('email')?.hasError(error.type) && loginForm.get('email')?.dirty)">{{error.message}}</ion-label>
-      </ng-container>
+      <ion-item>
+       <ion-input class="mons" label="Password" labelPlacement="floating" placeholder="********" formControlName="password" type="password" [counter]="true" maxlength="20"></ion-input>
+     </ion-item>
     </div>
+    <br>
 
     <div>
-      <ion-item>
-       <ion-input label="Password" labelPlacement="floating" placeholder="********" formControlName="password" type="password" [counter]="true" maxlength="20"></ion-input>
-     </ion-item>
+      <ng-container *ngFor="let error of formErrors.email">
+        <ion-label class="monsa" color="danger" *ngIf="(loginForm.get('email')?.hasError(error.type) && loginForm.get('email')?.dirty)">{{error.message}}</ion-label>
+      </ng-container>
     </div>
   
     <div>
       <ng-container *ngFor="let error of formErrors.password">
-        <ion-label color="danger" *ngIf="(loginForm.get('password')?.hasError(error.type) && loginForm.get('password')?.dirty)">{{error.message}}</ion-label>
+        <ion-label  class="monsa" color="danger" *ngIf="(loginForm.get('password')?.hasError(error.type) && loginForm.get('password')?.dirty)">{{error.message}}</ion-label>
       </ng-container>
     </div>
 
-    <ion-button type="submit" [disabled]="!loginForm.valid">
+    <ion-button fill="outline" class="mons" type="submit" [disabled]="!loginForm.valid">
       Iniciar Sesion
-    </ion-button> <br>
+    </ion-button>
 
-    <ion-button (click)="finish()">Crear Cuenta</ion-button>
+    <ion-button fill="outline" class="mons" (click)="finish()">Crear Cuenta</ion-button>
 
   </form>
   

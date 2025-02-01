@@ -2,7 +2,7 @@
   <ion-menu contentId="content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+        <ion-title class="logoish">Bubble</ion-title>
         <ion-buttons slot="end">
           <ion-button (click)="closeMenu()">
             <ion-icon name="arrow-back-outline"></ion-icon>
@@ -12,17 +12,17 @@
     </ion-header>
     <ion-content>
       <!--Contenido de Menu-->
-      <ion-item (click)="go_home()" (click)="closeMenu()">
-        Home
+      <ion-item class="logois" (click)="go_home()" (click)="closeMenu()">
+        <ion-icon name="home-outline"></ion-icon> Feed
       </ion-item>
-      <ion-item (click)="go_account()" (click)="closeMenu()">
-        Cuenta
+      <ion-item class="logois" (click)="go_account()" (click)="closeMenu()">
+        <ion-icon name="person-outline"></ion-icon> Perfil
        </ion-item>
-       <ion-item (click)="go_search()" (click)="closeMenu()">
-        Buscar 
+       <ion-item  class="logois" (click)="go_search()" (click)="closeMenu()">
+        <ion-icon name="person-add-outline"></ion-icon> Buscar Usuarios
        </ion-item>
-      <ion-item (click)="log_out()">
-        <ion-icon name="log-out-outline"></ion-icon> Salir
+      <ion-item  class="logois" (click)="log_out()">
+        <ion-icon name="log-out-outline"></ion-icon> Cerrar Sesion
       </ion-item>
 
     </ion-content>

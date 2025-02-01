@@ -2,25 +2,40 @@
   <ion-toolbar>
       <ion-buttons>
           <ion-menu-button> </ion-menu-button>
+          <ion-title class="logoish">Bubble</ion-title>
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>{{user_data.name}} {{user_data.last_name}}</h1>
-  <ion-avatar (click)="presentPhotoOptions()">
-    <img [src]="user_data.image ? user_data.image : 'assets/images/default-avatar.jpeg'"/>
-  </ion-avatar>
+  <h1 class="mons">{{user_data.name}} {{user_data.last_name}}</h1>
+  <div>
+   <ion-avatar (click)="clickup()">
+     <img [src]="user_data.image ? user_data.image : 'assets/images/default-avatar.jpeg'"/>
+   </ion-avatar>
+ </div>
 
-  <p>Usuario: {{user_data.username}}</p>
-  <table>
-   <p>Seguidores: {{user_data.followers.length}}</p>
-   <p>Siguiendo: {{user_data.followees.length}}</p>
+  <h3 class="mons">Usuario:</h3>
+  <p class="mons">{{user_data.username}}</p>
+  <table class="mons">
+    <tr style="width:100%">
+
+      <th style="width:50%">Seguidores:</th>
+
+      <th style="width:50%" >Siguiendo: </th>
+    </tr>
+    <tr>
+
+      <td>{{user_data.followers.length}}</td>
+
+      <td>{{user_data.followees.length}}</td>
+    </tr>
   </table>
+  <br>
   <!--USE TABLE TO ORGANIZE ACCOUNT PAGE-->
   <!--MAKE MODAL FOR MODIFYING PROFILE-->
   <ion-footer>
-    <ion-button type="submit" expand="full">
+    <ion-button  class="mons" (click)="editAccount()"type="submit" expand="full">
       Editar Perfil
     </ion-button>
   </ion-footer>

@@ -31,7 +31,18 @@ swiper-slide {
 
 ion-fab{
   ion-fab-button{
-    --background: rgb(211, 110, 52);
-    --color:white;
+    --background: rgb(255, 255, 255);
+    --color:rgb(0, 0, 0);
   }
+}
+.logoish{
+  font-family: Baristo;
+  font-size: xx-large;
+  font-style: italic;
+  padding-left: 25%;
+}
+
+
+.mons{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-icon name="close" class="close-icon" (click)="bhome()" slot="end"></ion-icon>
-    <ion-title>Crear Nuevo Post</ion-title>
+    <ion-title class="logois">Crear Nuevo Post</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,15 +11,15 @@
     
     <div (click)="presentPhotoOptions()">
       <img [src]="post_image ? post_image : 'assets/images/default-avatar.jpeg'" />
-      <p *ngIf="!post_image">Haz Click para subir una imagen</p>
+      <p class="mons" *ngIf="!post_image">Haz Click para subir una imagen</p>
     </div>
 
     <ng-container *ngFor="let error of formErrors.image">
-      <ion-label color="primary" *ngIf="(addPostForm.get('image')?.hasError(error.type))">{{error.message}}</ion-label>
+      <ion-label class="monsa" color="primary" *ngIf="(addPostForm.get('image')?.hasError(error.type))">{{error.message}}</ion-label>
     </ng-container>
 
     <ion-item>
-     <ion-textarea label="Descripcion del Post" labelPlacement="floating" placeholder="Type your post here!^^" formControlName="description">
+     <ion-textarea  class="mons" label="Descripcion del Post" labelPlacement="floating" placeholder="Type your post here!^^" formControlName="description">
      </ion-textarea>
     </ion-item>
 
@@ -30,7 +30,7 @@
     <!--Añadir imprimir un error del texto y que sea obligatorio-->
 
     <ion-footer>
-      <ion-button type="submit" [disabled]="!addPostForm.valid" expand="full">
+      <ion-button class="mons" fill="outline" type="submit" [disabled]="!addPostForm.valid" expand="full">
         Publicar
       </ion-button>
     </ion-footer>

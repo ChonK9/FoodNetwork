@@ -1,35 +1,45 @@
+ion-icon{
+    padding-right: 5%;
+}
+
+div{
+    padding-top: 5%;
+    padding-left: 35%;
+    padding-right: 25%;
+}
+
+ion-avatar{
+    width:100% ;  
+    height : 100% ;  
+    max-width: 100px ; 
+    max-height: 100px ;
+}
+p{
+    text-align: center;
+}
+
 
 .logoish{
-    font-family: Baristo;
-    font-size: xx-large;
-    font-style: italic;
-    text-align: center;
-  }
-
-  .logois{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: x-large;
+    font-size: medium;
     text-align: center;
-    padding: 20pxs;
   }
 
   .mons{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
   }
+
+  .monst{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 25%;
+  }
+  
 
   .monsa{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 10px;
-  }
-
-  ion-button{
     text-align: center;
-    padding-left: 27.5%;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-
-  .ionir{
-    text-align: center;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding-left: 15%;
+    padding: 10%;
+    
   }

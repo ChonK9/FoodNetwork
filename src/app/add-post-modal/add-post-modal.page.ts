@@ -6,7 +6,7 @@ import { PostService } from '../services/post.service';
 import { Storage } from '@ionic/storage-angular';
 import { ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
+
 
 
 defineCustomElements(window);
@@ -35,7 +35,6 @@ export class AddPostModalPage implements OnInit {
     private storage: Storage,
     private modalController: ModalController,
     public alertController: AlertController,
-    private router: Router,
   ) { 
     this.addPostForm = this.formBuilder.group({
       description: new FormControl('', Validators.required),

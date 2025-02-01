@@ -15,6 +15,7 @@ export class SearchUsersPage implements OnInit {
   query: string = '';
   hasMoreUsers: boolean = true;
   current_user: any;
+  isLoading: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -26,6 +27,7 @@ export class SearchUsersPage implements OnInit {
   }
 
   async loadUsers(event?: any){
+    this.isLoading = true;
     this.current_user = await this.storage.get('user');
     const followingUers = this.current_user.followees || [];
     console.log('following Uerd', followingUers);
@@ -46,10 +48,12 @@ export class SearchUsersPage implements OnInit {
         if(event){
           event.target.complete();
         }
+        this.isLoading = false;
       }
     ).catch(
       (error) => {
         console.log(error, 'error de peticion');
+        this.isLoading = false;
         event.target.complete();
       }
     );
